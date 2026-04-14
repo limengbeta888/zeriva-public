@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zeriva Support</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: #f5f5f7;
+                color: #1a1a1a;
+                min-height: 100vh;
+            }
+
+            header {
+                background: #fff;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 20px 24px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .app-name {
+                font-size: 20px;
+                font-weight: 600;
+                color: #1a1a1a;
+            }
+
+            .lang-toggle {
+                display: flex;
+                gap: 8px;
+            }
+
+            .lang-btn {
+                padding: 6px 14px;
+                border-radius: 20px;
+                border: 1px solid #d1d1d1;
+                background: transparent;
+                font-size: 13px;
+                cursor: pointer;
+                color: #555;
+                transition: all 0.15s;
+            }
+
+            .lang-btn.active {
+                background: #007aff;
+                border-color: #007aff;
+                color: #fff;
+            }
+
+            .container {
+                max-width: 680px;
+                margin: 40px auto;
+                padding: 0 24px 60px;
+            }
+
+            .hero {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                color: #555;
+                line-height: 1.6;
+            }
+
+            .contact-card {
+                background: #fff;
+                border-radius: 16px;
+                padding: 28px;
+                margin-bottom: 32px;
+                border: 1px solid #e5e5e5;
+                text-align: center;
+            }
+
+            .contact-card h2 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .contact-card p {
+                font-size: 15px;
+                color: #555;
+                margin-bottom: 16px;
+                line-height: 1.6;
+            }
+
+            .email-btn {
+                display: inline-block;
+                background: #007aff;
+                color: #fff;
+                text-decoration: none;
+                padding: 12px 28px;
+                border-radius: 10px;
+                font-size: 15px;
+                font-weight: 500;
+                transition: background 0.15s;
+            }
+
+            .email-btn:hover {
+                background: #0062cc;
+            }
+
+            .faq-section h2 {
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+
+            .faq-item {
+                background: #fff;
+                border-radius: 12px;
+                border: 1px solid #e5e5e5;
+                margin-bottom: 10px;
+                overflow: hidden;
+            }
+
+            .faq-question {
+                width: 100%;
+                text-align: left;
+                background: none;
+                border: none;
+                padding: 18px 20px;
+                font-size: 15px;
+                font-weight: 500;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #1a1a1a;
+            }
+
+            .faq-question:hover {
+                background: #f9f9f9;
+            }
+
+            .faq-chevron {
+                font-size: 13px;
+                color: #999;
+                transition: transform 0.2s;
+            }
+
+            .faq-answer {
+                display: none;
+                padding: 0 20px 18px;
+                font-size: 14px;
+                color: #555;
+                line-height: 1.7;
+                border-top: 1px solid #f0f0f0;
+                padding-top: 14px;
+            }
+
+            .faq-item.open .faq-answer {
+                display: block;
+            }
+            .faq-item.open .faq-chevron {
+                transform: rotate(180deg);
+            }
+
+            .privacy-link {
+                margin-top: 32px;
+                text-align: center;
+                font-size: 14px;
+                color: #999;
+            }
+
+            .privacy-link a {
+                color: #007aff;
+                text-decoration: none;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background: #1c1c1e;
+                    color: #f0f0f0;
+                }
+                header {
+                    background: #2c2c2e;
+                    border-color: #3a3a3c;
+                }
+                .app-name {
+                    color: #f0f0f0;
+                }
+                .lang-btn {
+                    border-color: #48484a;
+                    color: #aaa;
+                    background: transparent;
+                }
+                .lang-btn.active {
+                    background: #007aff;
+                    border-color: #007aff;
+                    color: #fff;
+                }
+                .contact-card,
+                .faq-item {
+                    background: #2c2c2e;
+                    border-color: #3a3a3c;
+                }
+                .contact-card p,
+                .hero p {
+                    color: #aaa;
+                }
+                .faq-question {
+                    color: #f0f0f0;
+                }
+                .faq-question:hover {
+                    background: #3a3a3c;
+                }
+                .faq-answer {
+                    color: #aaa;
+                    border-color: #3a3a3c;
+                }
+                .privacy-link {
+                    color: #666;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <span class="app-name">Zeriva</span>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLang('en')">
+                    English
+                </button>
+                <button class="lang-btn" onclick="setLang('zh')">中文</button>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="hero">
+                <h1 id="hero-title">Support</h1>
+                <p id="hero-sub">
+                    We're here to help you get the most out of Zeriva.
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <h2 id="contact-title">Contact Us</h2>
+                <p id="contact-desc">
+                    Have a question or found a bug? Send us an email and we'll
+                    get back to you as soon as possible.
+                </p>
+                <a
+                    class="email-btn"
+                    href="mailto:your@email.com"
+                    id="contact-btn"
+                    >Email Support</a
+                >
+            </div>
+
+            <div class="faq-section">
+                <h2 id="faq-title">Frequently Asked Questions</h2>
+                <div id="faq-list"></div>
+            </div>
+
+            <div class="privacy-link">
+                <a href="./index.html" id="privacy-link-text">Privacy Policy</a>
+            </div>
+        </div>
+
+        <script>
+            const content = {
+                en: {
+                    heroTitle: "Support",
+                    heroSub:
+                        "We're here to help you get the most out of Zeriva.",
+                    contactTitle: "Contact Us",
+                    contactDesc:
+                        "Have a question or found a bug? Send us an email and we'll get back to you as soon as possible.",
+                    contactBtn: "Email Support",
+                    faqTitle: "Frequently Asked Questions",
+                    privacyLink: "Privacy Policy",
+                    faqs: [
+                        {
+                            q: "Is Zeriva free to use?",
+                            a: "Yes, Zeriva is completely free to download and use.",
+                        },
+                        {
+                            q: "What photo and video formats does Zeriva support?",
+                            a: "Zeriva supports common formats including JPG, PNG, HEIC for photos, and MP4, MOV for videos.",
+                        },
+                        {
+                            q: "Does Zeriva collect my personal data?",
+                            a: "No. Zeriva does not collect any personal data. All editing happens locally on your device. Please see our Privacy Policy for full details.",
+                        },
+                        {
+                            q: "Does Zeriva work offline?",
+                            a: "Yes. All core editing features work fully offline with no internet connection required.",
+                        },
+                        {
+                            q: "How do I report a bug?",
+                            a: "Please email us at meng.li.nzdev@gmail.com，并附上问题描述、您的设备型号及 with a description of the issue, your device model, and iOS version. Screenshots or screen recordings are very helpful.",
+                        },
+                        {
+                            q: "Does Zeriva support dark mode?",
+                            a: "Yes. Zeriva fully supports both light and dark mode and will follow your system setting automatically.",
+                        },
+                    ],
+                },
+                zh: {
+                    heroTitle: "支持中心",
+                    heroSub: "我们在这里帮助您充分使用 Zeriva。",
+                    contactTitle: "联系我们",
+                    contactDesc:
+                        "有问题或发现了错误？发送邮件给我们，我们会尽快回复您。",
+                    contactBtn: "发送邮件",
+                    faqTitle: "常见问题",
+                    privacyLink: "隐私政策",
+                    faqs: [
+                        {
+                            q: "Zeriva 是免费的吗？",
+                            a: "是的，Zeriva 完全免费下载和使用。",
+                        },
+                        {
+                            q: "Zeriva 支持哪些照片和视频格式？",
+                            a: "Zeriva 支持常见格式，包括照片格式 JPG、PNG、HEIC，以及视频格式 MP4、MOV。",
+                        },
+                        {
+                            q: "Zeriva 会收集我的个人数据吗？",
+                            a: "不会。Zeriva 不收集任何个人数据，所有编辑操作均在您的设备本地完成。详情请参阅我们的隐私政策。",
+                        },
+                        {
+                            q: "Zeriva 可以离线使用吗？",
+                            a: "可以。所有核心编辑功能均可在没有网络连接的情况下完全离线使用。",
+                        },
+                        {
+                            q: "如何反馈问题？",
+                            a: "请发送邮件至 meng.li.nzdev@gmail.com，并附上问题描述、您的设备型号及 iOS 版本。提供截图或录屏将非常有帮助。",
+                        },
+                        {
+                            q: "Zeriva 支持深色模式吗？",
+                            a: "支持。Zeriva 完全兼容浅色和深色模式，并会自动跟随您的系统设置切换。",
+                        },
+                    ],
+                },
+            };
+
+            function setLang(lang) {
+                const c = content[lang];
+                document.getElementById("hero-title").textContent = c.heroTitle;
+                document.getElementById("hero-sub").textContent = c.heroSub;
+                document.getElementById("contact-title").textContent =
+                    c.contactTitle;
+                document.getElementById("contact-desc").textContent =
+                    c.contactDesc;
+                document.getElementById("contact-btn").textContent =
+                    c.contactBtn;
+                document.getElementById("faq-title").textContent = c.faqTitle;
+                document.getElementById("privacy-link-text").textContent =
+                    c.privacyLink;
+                document.documentElement.lang = lang;
+
+                const faqList = document.getElementById("faq-list");
+                faqList.innerHTML = "";
+                c.faqs.forEach((faq, i) => {
+                    const item = document.createElement("div");
+                    item.className = "faq-item";
+                    item.innerHTML = `
+        <button class="faq-question" onclick="toggleFaq(this)">
+          ${faq.q}
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">${faq.a}</div>
+      `;
+                    faqList.appendChild(item);
+                });
+
+                document
+                    .querySelectorAll(".lang-btn")
+                    .forEach((btn) => btn.classList.remove("active"));
+                document
+                    .querySelectorAll(".lang-btn")
+                    [lang === "en" ? 0 : 1].classList.add("active");
+            }
+
+            function toggleFaq(btn) {
+                const item = btn.parentElement;
+                item.classList.toggle("open");
+            }
+
+            const browserLang =
+                navigator.language || navigator.userLanguage || "en";
+            const defaultLang = browserLang.startsWith("zh") ? "zh" : "en";
+            setLang(defaultLang);
+        </script>
+    </body>
+</html>
