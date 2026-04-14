@@ -259,7 +259,7 @@
                 </p>
                 <a
                     class="email-btn"
-                    href="mailto:your@email.com"
+                    href="mailto:meng.li.nzdev@gmail.com"
                     id="contact-btn"
                     >Email Support</a
                 >
@@ -271,11 +271,18 @@
             </div>
 
             <div class="privacy-link">
-                <a href="./index.html" id="privacy-link-text">Privacy Policy</a>
+                <a href="./privacy-policy/index.html" id="privacy-link-anchor">
+                    <span id="privacy-link-text">Privacy Policy</span>
+                </a>
             </div>
         </div>
 
         <script>
+            const privacyUrls = {
+                en: "../privacy-policy/index.html",
+                zh: "../privacy-policy/zh.html",
+            };
+
             const content = {
                 en: {
                     heroTitle: "Support",
@@ -306,7 +313,7 @@
                         },
                         {
                             q: "How do I report a bug?",
-                            a: "Please email us at meng.li.nzdev@gmail.com，并附上问题描述、您的设备型号及 with a description of the issue, your device model, and iOS version. Screenshots or screen recordings are very helpful.",
+                            a: "Please email us at meng.li.nzdev@gmail.com with a description of the issue, your device model, and iOS version. Screenshots or screen recordings are very helpful.",
                         },
                         {
                             q: "Does Zeriva support dark mode?",
@@ -365,20 +372,25 @@
                 document.getElementById("faq-title").textContent = c.faqTitle;
                 document.getElementById("privacy-link-text").textContent =
                     c.privacyLink;
+
+                // Update href to match current language
+                document.getElementById("privacy-link-anchor").href =
+                    privacyUrls[lang];
+
                 document.documentElement.lang = lang;
 
                 const faqList = document.getElementById("faq-list");
                 faqList.innerHTML = "";
-                c.faqs.forEach((faq, i) => {
+                c.faqs.forEach((faq) => {
                     const item = document.createElement("div");
                     item.className = "faq-item";
                     item.innerHTML = `
-        <button class="faq-question" onclick="toggleFaq(this)">
-          ${faq.q}
-          <span class="faq-chevron">▼</span>
-        </button>
-        <div class="faq-answer">${faq.a}</div>
-      `;
+                        <button class="faq-question" onclick="toggleFaq(this)">
+                            ${faq.q}
+                            <span class="faq-chevron">▼</span>
+                        </button>
+                        <div class="faq-answer">${faq.a}</div>
+                    `;
                     faqList.appendChild(item);
                 });
 
