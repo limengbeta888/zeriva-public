@@ -1,2 +1,2 @@
-# Zeriva-Support
-Used as a host for Zeriva's support page
+# zeriva-support
+Host for Zeriva's public web pages
